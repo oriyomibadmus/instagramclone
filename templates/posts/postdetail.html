@@ -1,0 +1,49 @@
+{% extends "partials/main-base.html" %}
+{% load static %}
+
+{% block content %} 
+    <section class="main">
+        <div class="col-md-12">
+            <!--Post Section -->
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic"><img src="{{post.user.profile.picture.url}}" alt=""></div>
+                        <p class="username">{{post.user.username}}</p>
+                    </div>
+                    <img src="{% static 'assets/img/option.PNG' %}" class="options" alt="">
+                </div>
+                <img src="{{post.picture.url}}" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        {% if liked is True %}
+                        <a href="{% url 'posts:postlike' post.id %}"><img src="{% static 'assets/img/liked.png' %}" class="icon" alt=""></a>
+                        {% else %}
+                        <a href="{% url 'posts:postlike' post.id %}"><img src="{% static 'assets/img/like.PNG' %}" class="icon" alt=""></a>
+                        {% endif %}
+                        <img src="{% static 'assets/img/comment.PNG' %}" class="icon" alt="">
+                        <img src="{% static 'assets/img/send.PNG' %}" class="icon" alt="">
+                        {% if favorited is True %}
+                        <a href="{% url 'posts:postfavorite' post.id %}"><img src="{% static 'assets/img/saved.png' %}" class="save icon red" alt=""></a>
+                        {% else %}
+                        <a href="{% url 'posts:postfavorite' post.id %}"><img src="{% static 'assets/img/save.png' %}" class="save icon red" alt=""></a>
+                        {% endif %}
+
+                    </div>
+                    <p class="likes">{{post.likes}} Likes</p>
+                    <p class="description"><span>{{post.user.username}}</span>{{post.caption}}</p>
+                    <p class="description"> {% for tag in post.tags.all %} <a href="{{tag.get_absolute_url}}"> {{tag}}</a>{% endfor %}</p>
+                    <p class="post-time"> {{post.created_at|date:"F d, Y"}}</p>
+                </div>
+
+                <div class="comment-wrapper">
+                    <img src="{% static 'assets/img/smile.PNG' %}" class="icon" alt="">
+                    <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>            
+    </section>
+
+{% endblock content %}
+
+

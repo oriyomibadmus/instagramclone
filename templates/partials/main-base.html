@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type ="text/css" href="{% static 'assets1/profile-style.css' %}" />
+    <link rel="stylesheet" type= "text/css" href="{% static 'assets/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <img src="{% static 'assets/img/logo.PNG' %}" class="brand-img" alt="">
+            <input type="text" class="search-box" placeholder="search">
+            <div class="nav-items">
+                <a href="{% url 'posts:index' %}"><img src="{% static 'assets/img/home.PNG' %}" class="icon" alt=""></a>
+                <img src="{% static 'assets/img/messenger.PNG' %}" class="icon" alt="">
+                <a href="{% url 'posts:newpost' %}"><img src="{% static 'assets/img/add.PNG' %}" class="icon" alt=""></a>
+                <img src="{% static 'assets/img/explore.PNG' %}" class="icon" alt="">
+                <img src="{% static 'assets/img/like.PNG' %}" class="icon" alt="">
+                <a href="{% url 'userauth:profile' request.user.username %}"><div class="icon user-profile"></div></a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'userauth:login' %}">logout</a>
+                {% else %}
+                    <a href="{% url 'userauth:logout' %}">logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type= "text/css" href="{% static 'assets1/main.css' %}">
+</head>
+
+<body>
+    <span id="root">
+        <section class="section-all">
+
+            {% block content%}
+            
+            {% endblock %}
+
+            <!-- 2-Role Footer -->
+            <footer class="footer" role="contentinfo">
+                <div class="footer-container">
+
+                <nav class="footer-nav" role="navigation">
+                    <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Press</a></li>
+                    <li><a href="">Api</a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Terms</a></li>
+                    <li><a href="">Directory</a></li>
+                    <li>
+                        <span class="language">Language
+                        <select name="language" class="select" onchange="la(this.value)">
+                            <option value="#">English</option>
+                            <option value="http://ru-instafollow.bitballoon.com">Russian</option>
+                        </select>
+                        </span>
+                    </li>
+                    </ul>
+                </nav>
+
+                <span class="footer-logo">&copy; 2023 Instagram</span>
+                </div> <!-- Footer container end -->
+            </footer>
+
+        </section>
+    </span> <!-- Root -->
+
+        <!-- Select Link -->
+        <script type="text/javascript">
+        function la(src) {
+        window.location=src;
+        }
+        </script>
+    </body>
+
+</html>

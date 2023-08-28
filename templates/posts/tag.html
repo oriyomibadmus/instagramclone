@@ -1,0 +1,41 @@
+{% extends "partials/main-base.html" %}
+{% load static %}
+{% block content %}
+    <header>
+        <div class="container">
+            <div class="profile">
+                {% block banner %}
+                <section class="hero is-primary">
+                <div class="hero-body">
+                    <div class="container">
+                    <h1 style="font-size: 90px" class="title">
+                        #{{ tag.title }}
+                    </h1>
+                    </div>
+                </div>
+                </section>
+                {% endblock %}
+            </div>
+        </div>
+        <!-- End of container -->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="gallery">
+                {% for post in posts %}
+                <div class="gallery-item" tabindex="0">
+                    <a href="{{post.get_absolute_url}}"><img src="{{post.picture.url}}" class="gallery-image" alt=""></a>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- End of gallery -->
+    </main>
+{% endblock content %}

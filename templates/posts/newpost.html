@@ -1,0 +1,48 @@
+{% extends "partials/auth-base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+     <!-- 1-Role Main -->
+     <main class="main" role="main">
+        <div class="wrapper">
+        <article class="article">
+            <div class="content">
+                <div class="login-box">
+                    <div class="header">
+
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
+                        <strong><h3 style="text-align:center">New Post</h3></strong>
+                    </div>
+                    <!-- Header end -->
+                    
+                    <div class="form-wrap">
+                        <form class="form" method="POST" enctype='multipart/form-data'>
+                            {% csrf_token %}
+                            <div>
+                                {{form.picture}}
+                            </div>
+                            &nbsp;
+                            <div>
+                                <h3>Enter Caption</h3>
+                                {{form.caption}}
+                            </div>
+                            &nbsp;
+                            <div>
+                                <h3>Tags</h3>
+                                {{form.tags}}
+                            </div>
+                            &nbsp;
+                            <span class="button-box">
+                                <button class="btn" type="submit" name="submit">Create New Post</button>
+                            </span>
+                        </form>
+                    </div> <!-- Form-wrap end -->
+                </div> <!-- Login-box end -->
+            </div>
+        </article>
+        </div> <!-- Wrapper end -->
+    </main>
+
+{% endblock %}
